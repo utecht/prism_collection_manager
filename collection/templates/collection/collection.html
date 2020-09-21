@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+{% load humanize %}
+{% block title %}{{collection.name}}{% endblock %}
+{% block content %}
+<h1>{{collection.name}}</h1>
+
+<div style="display:flex">
+  <div>
+    {{collection.content | safe }}
+  </div>
+  <table style="width:300px">
+    <thead>
+      <tr>
+        <th>Collection Statistics</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Modalities</td>
+        <td>{{collection.modality_list}}</td>
+      </tr>
+      <tr>
+        <td>Number of Participants</td>
+        <td>{{collection.participant_count|intcomma}}</td>
+      </tr>
+      <tr>
+        <td>Number of Studies</td>
+        <td>{{collection.study_count|intcomma}}</td>
+      </tr>
+      <tr>
+        <td>Number of Series</td>
+        <td>{{collection.series_count|intcomma}}</td>
+      </tr>
+      <tr>
+        <td>Number of Images</td>
+        <td>{{collection.image_count|intcomma}}</td>
+      </tr>
+      <tr>
+        <td>Image Size (GB)</td>
+        <td>{{collection.image_size|intcomma}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>Citations</h3>
+<ul>
+  {% for citation in collection.citations.all %}
+  <li>
+    <span>{{ citation.get_citation_type_display }}</span>
+    <a href="{{citation.link}}">{{citation.line}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

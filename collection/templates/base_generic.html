@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}TCIA Collection Manager{% endblock %}</title>
+    <style>
+      #header {
+        background-image: url('https://www.cancerimagingarchive.net/wp-content/uploads/2020/03/tcia-header-bkgd.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-position: center;
+      }
+      #header_image{
+        padding:5px;
+        height:50px;
+      }
+      #content{
+        padding:25px;
+      }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+      <a href="/">
+        <img id="header_image" src="https://www.cancerimagingarchive.net/wp-content/uploads/2019/12/TCIA-logo-2x.png">
+      </a>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

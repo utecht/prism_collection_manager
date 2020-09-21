@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+{% load humanize %}
+
+
+{% block content %}
+
+<table>
+  <thead>
+    <tr>
+      <th>Collection Name</th>
+      <th>Participant Count</th>
+      <th>Image Size (GB)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for collection in collections %}
+    <tr>
+      <td><a href="/collection/{{collection.short_name}}">{{collection.name}}</a></td>
+      <td>{{collection.participant_count|intcomma}}</td>
+      <td>{{collection.image_size|intcomma}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
