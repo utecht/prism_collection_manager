@@ -8,40 +8,60 @@
   <div>
     {{collection.content | safe }}
   </div>
-  <table style="width:300px">
-    <thead>
-      <tr>
-        <th>Collection Statistics</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Modalities</td>
-        <td>{{collection.modality_list}}</td>
-      </tr>
-      <tr>
-        <td>Number of Participants</td>
-        <td>{{collection.participant_count|intcomma}}</td>
-      </tr>
-      <tr>
-        <td>Number of Studies</td>
-        <td>{{collection.study_count|intcomma}}</td>
-      </tr>
-      <tr>
-        <td>Number of Series</td>
-        <td>{{collection.series_count|intcomma}}</td>
-      </tr>
-      <tr>
-        <td>Number of Images</td>
-        <td>{{collection.image_count|intcomma}}</td>
-      </tr>
-      <tr>
-        <td>Image Size (GB)</td>
-        <td>{{collection.image_size|intcomma}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div style="min-width:25%">
+    <table>
+      <thead>
+        <tr>
+          <th>Collection Statistics</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Modalities</td>
+          <td>{{collection.modality_list}}</td>
+        </tr>
+        <tr>
+          <td>Number of Participants</td>
+          <td>{{collection.participant_count|intcomma}}</td>
+        </tr>
+        <tr>
+          <td>Number of Studies</td>
+          <td>{{collection.study_count|intcomma}}</td>
+        </tr>
+        <tr>
+          <td>Number of Series</td>
+          <td>{{collection.series_count|intcomma}}</td>
+        </tr>
+        <tr>
+          <td>Number of Images</td>
+          <td>{{collection.image_count|intcomma}}</td>
+        </tr>
+        <tr>
+          <td>Image Size (GB)</td>
+          <td>{{collection.image_size|intcomma}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Downloads</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Download all or Query/Filter</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for upload in collection.uploads.all %}
+        <tr>
+          <td>{{upload.description}}</td>
+          <td><a href="/media/{{upload.file}}"><img src="https://wiki.cancerimagingarchive.net/download/attachments/30671268/tcia_wiki_download_button.png"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <h3>Citations</h3>

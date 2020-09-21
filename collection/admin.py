@@ -13,3 +13,7 @@ class CitationAdmin(admin.ModelAdmin):
 @admin.register(models.Modality)
 class ModalityAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(models.Upload)
+class UploadAdmin(admin.ModelAdmin):
+    pass

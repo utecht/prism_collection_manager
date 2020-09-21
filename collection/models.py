@@ -8,6 +8,7 @@ class Collection(models.Model):
     short_name = models.CharField(max_length=20, unique=True)
     content = TrixField('Content')
     citations = models.ManyToManyField('Citation', blank=True)
+    uploads = models.ManyToManyField('Upload', blank=True)
     modalities = models.ManyToManyField('Modality', blank=True)
     participant_count = models.IntegerField(blank=True, null=True)
     study_count = models.IntegerField(blank=True, null=True)
@@ -40,3 +41,10 @@ class Citation(models.Model):
     )
     def __str__(self):
         return self.line[:30]
+
+class Upload(models.Model):
+    file = models.FileField(upload_to='uploads/')
+    description = models.TextField(blank=True)
+    updated = models.TimeField(auto_now=True)
+    def __str__(self):
+        return self.file.name
