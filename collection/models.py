@@ -64,7 +64,7 @@ class Citation(models.Model):
         default=CitationType.PUBC
     )
     def __str__(self):
-        return self.line[:30]
+        return self.line[:200]
 
 class DownloadVersion(models.Model):
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)

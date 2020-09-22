@@ -3,6 +3,9 @@
 {% block title %}{{collection.name}}{% endblock %}
 {% block content %}
 <h1>{{collection.name}}</h1>
+{% if user.is_staff %}
+<span>[<a href="edit">Edit</a>]</span>
+{% endif %}
 
 <div style="display:flex">
   <div style="max-width:900px">

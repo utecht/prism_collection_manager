@@ -24,7 +24,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.home),
-    path('collection/<str:collection_short_name>/', views.collection),
+    path('collection/<str:collection_short_name>/', views.collection, name='collection'),
+    path('collection/<str:collection_short_name>/edit', views.editor),
     url(r'^admin/', admin.site.urls),
     url(r'^trix/', include('trix.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
