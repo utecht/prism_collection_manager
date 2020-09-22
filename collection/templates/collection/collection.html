@@ -5,11 +5,13 @@
 <h1>{{collection.name}}</h1>
 
 <div style="display:flex">
-  <div>
+  <div style="max-width:900px">
     {{collection.content | safe }}
   </div>
   <div style="min-width:25%">
-    <table>
+    {% for ic in collection.image_collections %}
+    <h4>{{ic.name}}</h4>
+    <table class="table">
       <thead>
         <tr>
           <th>Collection Statistics</th>
@@ -19,33 +21,37 @@
       <tbody>
         <tr>
           <td>Modalities</td>
-          <td>{{collection.modality_list}}</td>
+          <td>{{ic.modality_list}}</td>
         </tr>
         <tr>
           <td>Number of Participants</td>
-          <td>{{collection.participant_count|intcomma}}</td>
+          <td>{{ic.participant_count|intcomma}}</td>
         </tr>
         <tr>
           <td>Number of Studies</td>
-          <td>{{collection.study_count|intcomma}}</td>
+          <td>{{ic.study_count|intcomma}}</td>
         </tr>
         <tr>
           <td>Number of Series</td>
-          <td>{{collection.series_count|intcomma}}</td>
+          <td>{{ic.series_count|intcomma}}</td>
         </tr>
         <tr>
           <td>Number of Images</td>
-          <td>{{collection.image_count|intcomma}}</td>
+          <td>{{ic.image_count|intcomma}}</td>
         </tr>
         <tr>
           <td>Image Size (GB)</td>
-          <td>{{collection.image_size|intcomma}}</td>
+          <td>{{ic.image_size|intcomma}}</td>
         </tr>
       </tbody>
     </table>
+    {% endfor %}
 
     <h3>Downloads</h3>
-    <table>
+    {% for version in collection.versions %}
+    <h5>Version {{version.version}}</h5>
+    {% if version.downloads %}
+    <table class="table">
       <thead>
         <tr>
           <th>Data Type</th>
@@ -53,14 +59,22 @@
         </tr>
       </thead>
       <tbody>
-        {% for upload in collection.uploads.all %}
+        {% for download in version.downloads %}
         <tr>
-          <td>{{upload.description}}</td>
-          <td><a href="/media/{{upload.file}}"><img src="https://wiki.cancerimagingarchive.net/download/attachments/30671268/tcia_wiki_download_button.png"></td>
+          <td>{{download.description}}</td>
+          <td>
+            <a href="/media/{{download.file}}"><img src="https://wiki.cancerimagingarchive.net/download/attachments/30671268/tcia_wiki_download_button.png">
+            {% if download.nbia_search %}
+            <a href="{{download.nbia_search}}" target="_"><img src="https://wiki.cancerimagingarchive.net/download/attachments/28672347/tcia_wiki_search_button.png">
+            {% endif %}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    {% endif %}
+    <i>{{version.description}}</i>
+    {% endfor %}
   </div>
 </div>
 

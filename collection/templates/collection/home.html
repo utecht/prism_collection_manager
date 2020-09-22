@@ -4,22 +4,35 @@
 
 {% block content %}
 
-<table>
+<table id="all_collections" class="table">
   <thead>
     <tr>
       <th>Collection Name</th>
+      <th>Modalities</th>
       <th>Participant Count</th>
-      <th>Image Size (GB)</th>
+      <th>Image Count</th>
+      <th>Collection Size</th>
     </tr>
   </thead>
   <tbody>
     {% for collection in collections %}
     <tr>
       <td><a href="/collection/{{collection.short_name}}">{{collection.name}}</a></td>
+      <td>{{collection.modality_list}}</td>
       <td>{{collection.participant_count|intcomma}}</td>
-      <td>{{collection.image_size|intcomma}}</td>
+      <td>{{collection.image_count|intcomma}}</td>
+      <td>{{collection.image_size|intcomma}} GB</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+<script>
+  $(document).ready(
+    function() {
+      $('#all_collections').DataTable( {
+          paging: false
+      } );
+    }
+  );
+</script
 {% endblock %}

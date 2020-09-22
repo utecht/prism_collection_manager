@@ -2,7 +2,21 @@
 <html lang="en">
 <head>
     <title>{% block title %}TCIA Collection Manager{% endblock %}</title>
+
+    <!-- Bootstrap4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- Datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
     <style>
+      body {
+        color: #212529;
+      }
       #header {
         background-image: url('https://www.cancerimagingarchive.net/wp-content/uploads/2020/03/tcia-header-bkgd.jpg');
         background-repeat: no-repeat;
@@ -10,12 +24,17 @@
         background-size: cover;
         background-position: center;
       }
-      #header_image{
+      #header-image{
         padding:5px;
         height:50px;
       }
       #content{
         padding:25px;
+      }
+
+      figure img {
+        max-width: 80%;
+        height: auto;
       }
     </style>
 </head>
@@ -23,7 +42,7 @@
 <body>
     <div id="header">
       <a href="/">
-        <img id="header_image" src="https://www.cancerimagingarchive.net/wp-content/uploads/2019/12/TCIA-logo-2x.png">
+        <img id="header-image" src="https://www.cancerimagingarchive.net/wp-content/uploads/2019/12/TCIA-logo-2x.png">
       </a>
     </div>
     <div id="content">

@@ -14,6 +14,14 @@ class CitationAdmin(admin.ModelAdmin):
 class ModalityAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(models.Upload)
-class UploadAdmin(admin.ModelAdmin):
+@admin.register(models.ImageCollection)
+class ImageCollectionAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.DownloadVersion)
+class DownloadVersionAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(models.Download)
+class DownloadAdmin(admin.ModelAdmin):
     pass
